@@ -1,0 +1,63 @@
+﻿@model IEnumerable<wayshopy.Models.M_Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-primary  btn-lg" href="@Url.Action("Create","M_Product")">Add New Product</a>
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.M_Category.Category_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_SalePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_PuchasePrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.M_Category.Category_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_Description)
+        </td>
+        <td>
+            <img height="75px" width="75px" src="@Url.Content(item.Product_Picture)" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_SalePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_PuchasePrice)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Product_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Product_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Product_ID })
+        </td>
+    </tr>
+}
+
+</table>
